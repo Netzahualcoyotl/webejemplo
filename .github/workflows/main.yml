@@ -1,0 +1,40 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v2
+
+      - name: Configurar Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8  # versión de Python
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar pruebas
+        run: |
+          ngrok authtoken ${{ secrets.ACCESO1 }}
+          ngrok restart
+          export FLASK_APP=app.py  # Configurar la variable de entorno FLASK_APP
+          flask run --host=0.0.0.0 &  # Ejecutar Flask en segundo plano
+          sleep 10  # Esperar unos segundos para que ngrok establezca el túnel
+          echo "La aplicación Flask está disponible en: $(curl --silent http://localhost:4040/api/tunnels | grep -o 'https://.*\.ngrok.io')"
+        shell: bash
+        env:
+          pythonLocation: /opt/hostedtoolcache/Python/3.8.17/x64
+          LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.8.17/x64/lib
+      - name: Limpiar procesos orfanos
+        run: |
+          sleep 60  # Esperar un minuto antes de limpiar los procesos orfanos
+          ps aux | grep '[f]lask' | awk '{print $2}' | xargs kill -9
+          ps aux | grep '[n]grok' | awk '{print $2}' | xargs kill -9

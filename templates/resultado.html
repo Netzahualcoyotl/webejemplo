@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta charset="UTF-8">
+  <title>Resultados de búsqueda</title>
+  <meta charset="UTF-8">
+  <title>Mi página</title>
+<!--
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilos/estilo.py') }}">
+  <img src="{{ url_for('static', filename='imagenes/icono/logo_ipn_guinda.svg') }}" alt="Logo">
+-->
+  
+</head>
+
+<body>
+  {% if estilos %}
+  <style>{{ estilos }}</style>
+  {% else %}
+  <p>No hay estilos</p>
+  {% endif %}
+  <h1>Resultados de búsqueda</h1>
+  <table>
+    <thead>
+      <tr>
+        {% for col in columnas %}
+          <th>{{ col }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% if valores %}
+        {% for fila in valores %}
+          <tr>
+            {% for valor in fila %}
+              <td>{{ valor }}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      {% else %}
+        <tr>
+          <td colspan="{{ num_columnas }}">No se encontraron resultados para la búsqueda.</td>
+        </tr>
+      {% endif %}
+    </tbody>
+  </table>
+  <form action="/" method="get">
+    <button type="submit">Nueva búsqueda</button>
+  </form>
+</body>
+</html>
+
+
+
+
+
+
+
+

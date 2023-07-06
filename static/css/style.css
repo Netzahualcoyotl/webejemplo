@@ -1,0 +1,48 @@
+body {
+  background-image: url('../images/background.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/*Esta línea de código establece que la imagen de fondo se encuentra en la carpeta static/images/ con el nombre background.jpg. Además, se configura para que la imagen cubra toda la pantalla, se posicione en el centro y no se repita.
+
+    Cambiar los colores de los textos: Para esto, se pueden agregar estilos a los elementos de la página. Por ejemplo, para cambiar el color del título principal, se puede agregar la siguiente línea de código al archivo style.css:
+*/
+
+css
+
+h1 {
+  color: #3f3f3f;
+}
+
+/*Esta línea de código establece que el color del título principal es #3f3f3f.
+
+    Agregar una fuente diferente: Para esto, se pueden agregar estilos a los elementos de la página. Por ejemplo, para cambiar la fuente de todos los textos, se puede agregar la siguiente línea de código al archivo style.css:
+*/
+css
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/*
+Esta línea de código establece que la fuente de todos los textos es Arial.
+
+    Agregar un menú de navegación: Para esto, se puede agregar un menú de navegación en la parte superior de la página. Para hacer esto, se puede agregar el siguiente código al archivo index.html:
+*/
+
+php
+
+<nav>
+  <ul>
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/buscar">Buscar</a></li>
+  </ul>
+</nav>
+
+/*
+Este código agrega un menú de navegación con dos opciones: "Inicio" y "Buscar". Cada opción está en un elemento li y se puede acceder a cada una haciendo clic en su correspondiente enlace a.
+
+Estas son solo algunas ideas para decorar la página. Existen muchas otras opciones que se pueden implementar dependiendo de los gustos y necesidades.
+*/
